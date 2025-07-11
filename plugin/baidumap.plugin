@@ -1,0 +1,23 @@
+#!name = 百度地图
+#!desc = 过滤百度地图广告
+#!tag = 去广告
+#!system = 
+#!system_version = 
+#!icon = https://raw.githubusercontent.com/git-starsh/Loon/main/Icon/App-Icon/BaiduMap.png
+
+[Rewrite]
+#百度地图去开屏
+^https:\/\/ecom\.map\.baidu\.com\/ad-ops\/afd\/entry\? - reject-dict
+# > 百度地图_搜索推广
+^https?:\/\/newclient\.map\.baidu\.com\/client\/phpui.*qt=hw - reject-200
+# > 百度地图_开屏广告|首页左上角广告
+^https?:\/\/newclient\.map\.baidu\.com\/client\/phpui2\/\?qt=ads - reject-200
+# > 百度地图_DNS处理
+^https?:\/\/httpdns\.baidubce\.com - reject-200
+# > 百度地图_各种商业推广
+^https?:\/\/newclient\.map\.baidu\.com\/client\/crossmarketing - reject-200
+# > 百度地图_我的页面地图动态
+^https?:\/\/newclient\.map\.baidu\.com\/client\/usersystem\/home\/dynamic - reject-200
+
+[MITM]
+hostname = 180.76.76.200, newclient.map.baidu.com, httpdns.baidubce.com, ugc.map.baidu.com, ecom.map.baidu.com
